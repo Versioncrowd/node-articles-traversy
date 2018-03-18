@@ -1,0 +1,36 @@
+doctype html
+html
+    head
+        title Knowledgebase
+        link(rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css")
+        link(rel="stylesheet" type="text/css" href="/css/style.css")
+    body
+        header
+            nav.navbar.navbar-expand-sm.bg-light
+                ul.navbar-nav
+                    li.nav-item
+                        a.nav-link(href='/') Articles
+                    if user
+                        li.nav-item
+                            a.nav-link(href='/articles/add') Add Article
+                ul.navbar-nav.ml-auto
+                    if user
+                        li.nav-item
+                            a.nav-link(href="/users/logout") Logout
+                    else
+                        li.nav-item
+                            a.nav-link(href="/users/register") Register 
+                        li.nav-item 
+                            a.nav-link(href="/users/login") Login
+        main.container.maincont
+            != messages('message', locals)
+            if errors
+                each error, i in errors
+                    div(class="alert alert-danger") #{error.msg}
+            block content
+        footer.footer
+            .container
+                p Copyright &copy; 2018
+        script(src='/bower_components/jquery/dist/jquery.js')  
+        script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
+        script(src='/js/main.js') 
