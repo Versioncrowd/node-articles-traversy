@@ -15,11 +15,11 @@ const app = express();
 const Article = require("./models/article");
 
 // Connection to MLAB MongoDB from Heroku env
-let mongodbUri = new aws.S3({
+/*let mongodbUri = new aws.S3({
     mongodbUri: process.env.S3_MONGOURI
-})
+}) */
 
-// const mongodbUri = config.database;
+const mongodbUri = config.database;
 const options = {
     useMongoClient: true
 }
